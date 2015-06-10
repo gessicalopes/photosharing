@@ -1,0 +1,52 @@
+﻿
+<html ng-app="Script/Controllers">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="Script/angular.min.js"></script>
+<script src="Script/angular-file-upload.min.js"></script>
+<script src="Script/angular-file-upload-shim.min.js"></script>
+<script src="app/app.module.js"></script>
+<script src="Script/Controllers/UploadController.js"></script>
+    <title>Photo Sharing</title>
+</head>
+<body ng-controller="UploadController as vm" >
+<ul class="nav nav-tabs">
+   
+     
+<div class="jumbotron">
+    <div class="container">
+         <h1>Photo Sharing</h1>
+         <p>Site para compartilhamento de fotos.</p>
+    </div>
+</div>
+   
+<div class="wrapper" role="main" ng-repeat="item in results">
+    <div class="container">
+        <div class="row">
+            <div id="conteudo" class="col-md-9">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img ng-src="data:image/jpeg;base64,{{item.Arquivo}}" id="photo-id" alt="" width="100" height="100" >
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{item.Descricao}}</p>
+                    </div>
+                </div>
+            </div>		
+        
+        </div>
+    </div>
+</div>
+
+<div class="btn-group">
+    <input  class="btn" type="file" ng-file-select="vm.selecionarArquivo($files)" />
+    <button class="btn" ng-click="vm.uploadFileToUrl()" value="file">upload me</button> 
+</div>
+ 
+</ul>
+</body>
+</html>
